@@ -1,4 +1,4 @@
-# CodexDrake-SE
+# CDrake-SE
 ##### A library that will make your life easier when you want to search the internet, not pay APIs, search from your computer for free!
 
 This library allows you to search in various internet search engines, you can search for news, images, videos, items to buy and books, the results can be paginated and filtered by language in some engines, it is quite complete, we even have our own web service to browse the internet, also written in NodeJS using this library, below it will be explained how you can use and perform searches in a couple of lines of code.
@@ -12,7 +12,7 @@ It is important that you follow each instruction given to you step by step, beca
 
 ```bash
 # <In the folder of your project where the package.json is located>
-npm i codexdrake-se
+npm i cdrake-se
 ```
 After executing the command, the installation of the package will be initialized, once finished we will create a file, in which you will experiment with the examples that we will give you.
 ```bash
@@ -25,7 +25,7 @@ Once the command is executed, a file will be created for you, then we recommend 
 First we will start with the simple, the easy and fast, the automatic search allows you to search according to a category that you indicate, it will try all the engines in which the indicated category is available, the first one that responds to the request will be the answer that is back, it is recommended to use the automatic search in production, in real cases, if you saw our demo, our web service, it works with the automatic search, you can see the source code of it, we literally used two lines of code.
 ```javascript
 // ! Requiring the library to be able to do the search
-const SearchEngine = require('codexdrake-se');
+const SearchEngine = require('cdrake-se');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
@@ -117,7 +117,7 @@ As you could tell, in the example code when executing the automatic search, we s
 Next you will be shown an example of the autocomplete, remember that the idea is that you test the code that is presented to you in the file that you previously created
 ```javascript
 // ! Requiring the library to be able to do the search
-const SearchEngine = require('codexdrake-se');
+const SearchEngine = require('cdrake-se');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
@@ -152,15 +152,15 @@ Previously I told you about the automatic search, you could not choose which eng
 
 ### Example using specific engines
 ```javascript
-// * const AolEngine = require('codexdrake-se/Engines/Aol');
-// * const AskEngine = require('codexdrake-se/Engines/Ask');
-// * const QwantEngine = require('codexdrake-se/Engines/Qwant');
-// * const YahooEngine = require('codexdrake-se/Engines/Yahoo');
+// * const AolEngine = require('cdrake-se/Engines/Aol');
+// * const AskEngine = require('cdrake-se/Engines/Ask');
+// * const QwantEngine = require('cdrake-se/Engines/Qwant');
+// * const YahooEngine = require('cdrake-se/Engines/Yahoo');
 
 // ! Requiring the google engine, if you notice in the other commented lines 
 // ! there are the other engines available :), in this example we 
 // ! will use the Google engine.
-const GoogleEngine = require('codexdrake-se/Engines/Google');
+const GoogleEngine = require('cdrake-se/Engines/Google');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
@@ -206,7 +206,7 @@ const GoogleEngine = require('codexdrake-se/Engines/Google');
 ### Example of the autocomplete using the specific engine
 ```javascript
 // ! Requiring the suggestion engine
-const SuggestEngine = require('codexdrake-se/Engines/Suggest');
+const SuggestEngine = require('cdrake-se/Engines/Suggest');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
@@ -227,7 +227,7 @@ const SuggestEngine = require('codexdrake-se/Engines/Suggest');
 In this example we will obtain news that is related to Covid 19, we will use the automatic search.
 ```javascript
 // ! Importing the library to perform the search
-const SearchEngine = require('codexdrake-se');
+const SearchEngine = require('cdrake-se');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
@@ -259,8 +259,8 @@ const SearchEngine = require('codexdrake-se');
 We will not mix the results, although we can do it, what we will do is use two search engines to solve a request, the first one to return an answer is the one that will be shown to the client, it is what the automatic search does but we will do it manually.
 ```javascript
 // ! We import the two engines that we will use to perform the search
-const GoogleEngine = require('codexdrake-se/Engines/Google');
-const YahooEngine = require('codexdrake-se/Engines/Yahoo');
+const GoogleEngine = require('cdrake-se/Engines/Google');
+const YahooEngine = require('cdrake-se/Engines/Yahoo');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
@@ -306,7 +306,7 @@ const YahooEngine = require('codexdrake-se/Engines/Yahoo');
 In this example, we will obtain books related to the universe, a curious fact, codexdrake, our creation, is called that due to codex 'greed' from the Latin and drake that I gave the meaning of results, since it is an equation that allows finding possible alien civilizations, haha.
 ```javascript
 // ! We import the search engine to perform the request
-const SearchEngine = require('codexdrake-se');
+const SearchEngine = require('cdrake-se');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
@@ -339,7 +339,7 @@ const SearchEngine = require('codexdrake-se');
 In this example we will get videos of kittens, if you are a bit shady you may not want to search for videos of kittens and maybe pepa pig sex, although you can do it, curiously this is safe and nobody will know that you searched for that, except your internet provider who is seeing the outgoing internet requests from your computer where you see the query 'pepa pig porn', well, you can burn their house down.
 ```javascript
 // ! We import the search engine to perform the request
-const SearchEngine = require('codexdrake-se');
+const SearchEngine = require('cdrake-se');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
@@ -367,7 +367,7 @@ const SearchEngine = require('codexdrake-se');
 In this example we will look for items to buy, it is likely that the reader is embarrassed that his supplier sees him buying pills to make his cock erect, or that the reader is looking for 3cm condoms, but don't worry, there is rodi and here I have your solution, we will not look for any of the above, but it is something to modify.
 ```javascript
 // ! We import the search engine to perform the request
-const SearchEngine = require('codexdrake-se');
+const SearchEngine = require('cdrake-se');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
@@ -395,7 +395,7 @@ const SearchEngine = require('codexdrake-se');
 It is possible that the reader is a hunk, but a fake hunk, who is wanted by the FBI, who uses image search engines to look for fake photos and tell girls that it is him, don't worry, friend, here you go your safe search engine, we will not look for photos of muscular masculine men, but we will look for images of pepa pig.
 ```javascript
 // ! We import the search engine to perform the request
-const SearchEngine = require('codexdrake-se');
+const SearchEngine = require('cdrake-se');
 
 // ! Creating an asynchronous function that will be executed 
 // ! automatically when the script is initialized, which will 
