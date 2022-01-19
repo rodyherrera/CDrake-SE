@@ -1,0 +1,34 @@
+{
+    "name": "cdrake-se",
+    "version": "1.0.2",
+    "description": "A library that will make your life easier when you want to search the internet, not pay APIs, search from your computer for free!",
+    "author": "Rodolfo Herrera Hernandez @codewithrodi",
+    "license": "MIT",
+    "keywords": [
+        "search",
+        "search-engine",
+        "metasearch-engine",
+        "websearch",
+        "google",
+        "bing",
+        "yahoo",
+        "images",
+        "videos",
+        "news",
+        "books",
+        "links",
+        "internet",
+        "scraper",
+        "cheerio",
+        "webscrape",
+        "autocomplete",
+        "suggest",
+        "self-hosted",
+        "search"
+    ],
+    "dependencies": {
+        "axios": "^0.24.0",
+        "cheerio": "^1.0.0-rc.10",
+        "node-suggest": "^1.0.2"
+    }
+}
