@@ -1,12 +1,13 @@
 {
     "name": "cdrake-se",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "description": "A library that will make your life easier when you want to search the internet, not pay APIs, search from your computer for free!",
     "author": "Rodolfo Herrera Hernandez @codewithrodi",
     "license": "MIT",
+    "repository": {
         "type": "git",
         "url": "https://github.com/codewithrodi/CDrake-SE/"
-    }
+    },
     "keywords": [
         "search",
         "search-engine",
@@ -27,6 +28,13 @@
         "autocomplete",
         "suggest",
         "self-hosted",
+        "search-engine-client",
+        "aol",
+        "qwant",
+        "ask",
+        "yahoo",
+        "google-search",
+        "search-scraper",
         "search"
     ],
     "dependencies": {
