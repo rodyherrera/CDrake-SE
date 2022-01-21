@@ -2,6 +2,7 @@
 ##### A library that will make your life easier when you want to search the internet, not pay APIs, search from your computer for free!
 
 This library allows you to search in various internet search engines, you can search for news, images, videos, items to buy and books, the results can be paginated and filtered by language in some engines, it is quite complete, we even have our own web service to browse the internet, also written in NodeJS using this library, below it will be explained how you can use and perform searches in a couple of lines of code.
+It is important to note that the results obtained from this library when performing searches will depend on the location where the script is being executed, the results will be different if you are testing the library in the United States than in Chile, in this case, this library was developed in Chile, where all categories work without any problem.
 
 Previously it was mentioned to you that we had a web service that works thanks to this library, go through the demo! [https://codexdrake.codewithrodi.com/](https://codexdrake.codewithrodi.com "CodexDrake Web Search Engine")
 
