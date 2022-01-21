@@ -4,6 +4,9 @@
     "description": "A library that will make your life easier when you want to search the internet, not pay APIs, search from your computer for free!",
     "author": "Rodolfo Herrera Hernandez @codewithrodi",
     "license": "MIT",
+        "type": "git",
+        "url": "https://github.com/codewithrodi/CDrake-SE/"
+    }
     "keywords": [
         "search",
         "search-engine",
