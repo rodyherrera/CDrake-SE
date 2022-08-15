@@ -97,7 +97,7 @@ class YahooEngine{
                 Description: Buffer.Descriptions[Index],
                 Image: Buffer.Images[Index],
                 Publisher: Buffer.Publishers[Index],
-                PubslihedAt: Buffer.PublishedDates[Index]
+                PublishedAt: Buffer.PublishedDates[Index]
             }))
         };
     };
