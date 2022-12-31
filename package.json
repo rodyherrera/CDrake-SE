@@ -1,6 +1,6 @@
 {
     "name": "cdrake-se",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "A library that will make your life easier when you want to search the internet, not pay APIs, search from your computer for free!",
     "author": "Rodolfo Herrera Hernandez @codewithrodi",
     "license": "MIT",
@@ -20,8 +20,8 @@
         "videos",
         "news",
         "books",
-        "links",
-        "internet",
+        "wikipedia",
+        "engine",
         "scraper",
         "cheerio",
         "webscrape",
@@ -40,6 +40,9 @@
     "dependencies": {
         "axios": "^0.24.0",
         "cheerio": "^1.0.0-rc.10",
-        "node-suggest": "^1.0.2"
+        "i": "^0.3.7",
+        "node-suggest": "^1.0.2",
+        "npm": "^9.2.0",
+        "wikipedia": "^2.0.0"
     }
 }

@@ -420,6 +420,63 @@ const SearchEngine = require('cdrake-se');
     }
 }());
 ```
+
+##### Gathering information from a Wikipedia page or biography
+You can collect a lot of information by requesting a search of the Wikipedia databases, if this search exactly matches one it will return a ton of information that is organized inside an object, in case, there is no page in based on your search a { Status: 'Error' } will be returned.
+
+```javascript
+// ! Importing the library to perform the search
+const SearchEngine = require('cdrake-se');
+
+// ! Creating an asynchronous function that will be executed 
+// ! automatically when the script is initialized, which will 
+// ! search for information and display it on the screen
+(async function(){
+    try{
+        const LinusTorvaldsWikipediaPage = await SearchEngine({
+            // ! We indicate the method, in this case Wikipedia <SEARCH>
+            Method: 'Wikipedia',
+            // ! We indicate the query, in this case Linus Torvalds to return us information related to Linus Torvalds
+            Query: 'Linus Torvalds',
+            // ! We indicate the language
+            Language: 'en'
+        });
+        console.log(LinusTorvaldsWikipediaPage);
+    }catch(SearchRuntimeError){
+        // ! If an error occurs, we will display it in the terminal
+        console.log(SearchRuntimeError);
+    }
+}());
+```
+
+##### Using the Wikipedia suggestion engine.
+Apart from the search suggestion that the engine has, you can use the suggestion engine that Wikipedia has, so that you can obtain existing links within their respective databases to access them.
+
+```javascript
+// ! Importing the library to perform the search
+const SearchEngine = require('cdrake-se');
+
+// ! Creating an asynchronous function that will be executed 
+// ! automatically when the script is initialized, which will 
+// ! search for information and display it on the screen
+(async function(){
+    try{
+        const ElonWikipediaSearchSuggests = await SearchEngine({
+            // ! We indicate the method, in this case Wikipedia Suggestion
+            Method: 'Wikipedia.Suggest',
+            // ! We indicate the query, in this case Elon to return us suggestions
+            Query: 'Elon',
+            // ! We indicate the language
+            Language: 'en'
+        });
+        console.log(ElonWikipediaSearchSuggests);
+    }catch(SearchRuntimeError){
+        // ! If an error occurs, we will display it in the terminal
+        console.log(SearchRuntimeError);
+    }
+}());
+```
+
 ### Contributions and future versions
 This library along with its real world usage example web service will continue to receive updates, improvements and bug fixes, I decided to make the engine that uses the codexdrake library search web service so that other developers can experiment with it, create better stuff and update them if they fucking want to, they can do whatever they want with the code.
 

@@ -19,6 +19,7 @@ const QwantEngine = require('./Engines/Qwant');
 const AolEngine = require('./Engines/Aol');
 const AskEngine = require('./Engines/Ask');
 const SuggestEngine = require('./Engines/Suggest');
+const WikipediaEngine = require('./Engines/Wikipedia');
 
 module.exports = async ({ Method, Query, Page = 1, Language = 'en-US' }) => {
     // ! Do it better
@@ -29,6 +30,7 @@ module.exports = async ({ Method, Query, Page = 1, Language = 'en-US' }) => {
         Qwant: new QwantEngine(Arguments),
         Aol: new AolEngine(Arguments),
         Ask: new AskEngine(Arguments),
+        Wikipedia: new WikipediaEngine(Arguments)
     };
     if(Method === 'Images')
         return await Promise.any([
@@ -38,6 +40,14 @@ module.exports = async ({ Method, Query, Page = 1, Language = 'en-US' }) => {
     else if(Method === 'Books')
         return await Promise.any([
             Instances.Google.Books()
+        ]);
+    else if(Method === 'Wikipedia')
+        return await Promise.any([
+            Instances.Wikipedia.Wiki()
+        ]);
+    else if(Method === 'Wikipedia.Suggest')
+        return await Promise.any([
+            Instances.Wikipedia.Suggest()
         ]);
     else if(Method === 'Suggest')
         return await SuggestEngine(Query);
