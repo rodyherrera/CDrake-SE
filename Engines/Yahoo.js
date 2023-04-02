@@ -50,7 +50,7 @@ class YahooEngine{
         const $ = await this.GetCheerioInstance();
         const TotalIndexedResults = this.ExtractResultStats($)[0];
         const Buffer = { Links: [], Titles: [], Descriptions: [] };
-        $('.options-toggle > .title > a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
+        $('.options-toggle > .title > a > span').each((Index, Element) => Buffer.Links[Index] = $(Element).text().replaceAll('›', '/').replaceAll(/\s/g,''));
         $('.options-toggle > .title > a > span').each((Index, Element) => $(Element).remove());
         $('.options-toggle > .title').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
         $('.compText > p > span:last-child').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text());
