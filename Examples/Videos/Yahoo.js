@@ -16,19 +16,9 @@
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  ****/
 
-const NodeSuggest = require('node-suggest');
+const YahooEngine = require('../../Engines/Yahoo');
 
-module.exports = async (Query) => ({
-    Results: await Promise.any([
-        NodeSuggest.google(Query),
-        NodeSuggest.ddg(Query),
-        NodeSuggest.bing(Query),
-        NodeSuggest.qwant(Query),
-        NodeSuggest.yahoo(Query),
-        NodeSuggest.startpage(Query),
-        NodeSuggest.dogpile(Query),
-        NodeSuggest.swisscows(Query),
-        NodeSuggest.ask(Query),
-        NodeSuggest.brave(Query)
-    ])
-});
+(async () => {
+    const Instance = new YahooEngine({ Query: 'Elon Musk', Page: 1 });
+    console.log(await Instance.Videos());
+})();

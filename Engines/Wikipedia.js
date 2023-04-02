@@ -7,8 +7,11 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE- Fast, secure, private search engine using scrape, built 
- * in JavaScript by a professional water drinker haha ​​<3.
+ * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
+ * solely with JavaScript and doses of Modafinil.
+ * 
+ * -> https://github.com/codewithrodi/CodexDrake/
+ * -> https://github.com/codewithrodi/CDrake-SE/
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  ****/

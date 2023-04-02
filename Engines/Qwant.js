@@ -7,8 +7,11 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE- Fast, secure, private search engine using scrape, built 
- * in JavaScript by a professional water drinker haha ​​<3.
+ * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
+ * solely with JavaScript and doses of Modafinil.
+ * 
+ * -> https://github.com/codewithrodi/CodexDrake/
+ * -> https://github.com/codewithrodi/CDrake-SE/
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  ****/
@@ -28,9 +31,9 @@ class QwantEngine{
     Images = async () => {
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Images: [], Sources: [] };
-        $('.Images-module__ImagesGridTitle___24asr').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
-        $('.Image-module__ImageBackdrop___2XfGj').each((Index, Element) => Buffer.Images[Index] = $(Element).attr('src'));
-        $('.Images-module__ImagesGridLink___8NgTi').each((Index, Element) => Buffer.Sources[Index] = $(Element).text());
+        $('h2').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
+        $('a img').each((Index, Element) => Buffer.Images[Index] = $(Element).attr('src'));
+        $('._2XdD5').each((Index, Element) => Buffer.Sources[Index] = $(Element).text());
         return {
             Results: Buffer.Images.map((Image, Index) => ({
                 Image,

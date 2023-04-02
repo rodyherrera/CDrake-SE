@@ -7,8 +7,11 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE- Fast, secure, private search engine using scrape, built 
- * in JavaScript by a professional water drinker haha ​​<3.
+ * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
+ * solely with JavaScript and doses of Modafinil.
+ * 
+ * -> https://github.com/codewithrodi/CodexDrake/
+ * -> https://github.com/codewithrodi/CDrake-SE/
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  ****/
@@ -35,11 +38,11 @@ class YahooEngine{
     GetCheerioInstance = async () => {
         let Endpoint = `https://search.yahoo.com/search?q=${this.Query}&ei=UTF-8&nojs=1&b=${(this.Page - 1) * 10}`;
         if(this.Type === 'Video')
-            Endpoint = `https://video.search.yahoo.com/search/video;_ylt=AwrC5pn.SN9huAcANVf7w8QF;_ylu=c2VjA3NlYXJjaAR2dGlkAw--?p=${Query}`
+            Endpoint = `https://video.search.yahoo.com/search/video;_ylt=AwrC5pn.SN9huAcANVf7w8QF;_ylu=c2VjA3NlYXJjaAR2dGlkAw--?p=${this.Query}`
         else if(this.Type === 'News')
             Endpoint = `https://news.search.yahoo.com/search;_ylt=AwrDQ2p8VN9hxV8ApwD7w8QF?p=${this.Query}&b=${(this.Page - 1)}1`;
         else if(this.Type === 'Shopping')
-            Endpoint = `https://shopping.yahoo.com/search?&p=${Query}`;
+            Endpoint = `https://shopping.yahoo.com/search?&p=${this.Query}`;
         return Cheerio.load((await Axios.get(Endpoint, kAxiosOptions)).data);
     }
 
@@ -50,7 +53,7 @@ class YahooEngine{
         $('.options-toggle > .title > a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
         $('.options-toggle > .title > a > span').each((Index, Element) => $(Element).remove());
         $('.options-toggle > .title').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
-        $('.compText').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text());
+        $('.compText > p > span:last-child').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text());
         return {
             TotalIndexedResults,
             Results: Buffer.Links.map((Link, Index) => ({
@@ -65,9 +68,9 @@ class YahooEngine{
         this.Type = 'Video';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Links: [], PublishedDates: [] };
-        $('.bx-bb > h3').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
-        $('.bx-bb > .v-age').each((Index, Element) => Buffer.PublishedDates[Index] = $(Element).text());
-        $('.bx-url > .url').each((Index, Element) => Buffer.Links[Index] = $(Element).text());
+        $('li h3').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
+        $('div.v-age').each((Index, Element) => Buffer.PublishedDates[Index] = $(Element).text());
+        $('.vres a:first-child').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
         return {
             Results: Buffer.Links.map((Link, Index) => ({
                 Link,
@@ -106,10 +109,10 @@ class YahooEngine{
         this.Type = 'Shopping';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Prices: [], Platforms: [], Links: [] };
-        $('.kzkTGR').each((Index, Element) => Buffer.Prices[Index] = $(Element).text());
-        $('.ellipsis_multi_2').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
-        $('.fJNqPk .ellipsis').each((Index, Element) => Buffer.Platforms[Index] = $(Element).text());
-        $('.fJNqPk > :first-child').each((Index, Element) => Buffer.Links[Index] = 'https://shopping.yahoo.com/' + $(Element).attr('href'));
+        $('span.FluidProductCell__PriceText-sc-fsx0f7-10').each((Index, Element) => Buffer.Prices[Index] = $(Element).text());
+        $('span.FluidProductCell__Title-sc-fsx0f7-9').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
+        $('span.FluidProductCell__MerchantInfo-sc-fsx0f7-8').each((Index, Element) => Buffer.Platforms[Index] = $(Element).text());
+        $('a.unstyled-link').each((Index, Element) => Buffer.Links[Index] = 'https://shopping.yahoo.com/' + $(Element).attr('href'));
         return {
             Results: Buffer.Links.map((Link, Index) => ({
                 Link,

@@ -7,8 +7,11 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE- Fast, secure, private search engine using scrape, built 
- * in JavaScript by a professional water drinker haha ​​<3.
+ * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
+ * solely with JavaScript and doses of Modafinil.
+ * 
+ * -> https://github.com/codewithrodi/CodexDrake/
+ * -> https://github.com/codewithrodi/CDrake-SE/
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  ****/
@@ -45,7 +48,7 @@ class GoogleEngine{
         const Buffer = { Links: [], Titles: [], Descriptions: [] };
         $('.yuRUbf > a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
         $('.yuRUbf > a > h3').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
-        $('.lEBKkf').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text().trim());
+        $('.VwiC3b').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text().trim());
         return {
             TotalIndexedResults,
             SearchTimeout,
@@ -64,10 +67,10 @@ class GoogleEngine{
         const Buffer = { Links: [], Titles: [], Descriptions: [], 
                 PublishedDates: [], Images: [], Publishers: [] };
             $('.NUnG9d > span').each((Index, Element) => Buffer.Publishers[Index] = $(Element).text());
-        $('.mCBkyc').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
-        $('.GI74Re').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text());
-        $('.WlydOe').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
-        $('.OSrXXb > span').each((Index, Element) => Buffer.PublishedDates[Index] = $(Element).text());
+        $('div.MBeuO').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
+        $('div.GI74Re').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text());
+        $('.SoaBEf a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
+        $('.OSrXXb span').each((Index, Element) => Buffer.PublishedDates[Index] = $(Element).text());
         return {
             TotalIndexedResults,
             SearchTimeout,
@@ -87,15 +90,15 @@ class GoogleEngine{
         const [TotalIndexedResults, SearchTimeout] = this.ExtractResultStats($);
         const Buffer = { Titles: [], Links: [], Descriptions: [], 
                         Platforms: [], PublishedDates: [] };
-        $('.DKV0Md').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
-        $('.Uroaid').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text());
-        $('.Zg1NU').each((Index, Element) => Buffer.Platforms[Index] = $(Element).text());
-        $('.P7xzyf > span:last-child').each((Index, Element) => Buffer.PublishedDates[Index] = $(Element).text());
-        $('.ct3b9e > a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
+        $('.g div div div .ct3b9e h3').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
+        $('.g div div div .dXiKIc div.Uroaid').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text());
+        $('.g div div div .dXiKIc span.Zg1NU').each((Index, Element) => Buffer.Platforms[Index] = $(Element).text());
+        $('.g div div div .dXiKIc span span').each((Index, Element) => Buffer.PublishedDates[Index] = $(Element).text());
+        $('.DhN8Cf a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
         return {
             TotalIndexedResults,
             SearchTimeout,
-            Results: Buffer.Links.map((Link, Index) => ({
+            Results: Buffer.Titles.map((Link, Index) => ({
                 Link,
                 Title: Buffer.Titles[Index],
                 Description: Buffer.Descriptions[Index],
@@ -109,7 +112,7 @@ class GoogleEngine{
         this.Type = 'shop';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Prices: [], Platforms: [], Links: [] };
-        $('.Xjkr3b').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
+        $('a.Lq5OHe').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
         $('.OFFNJ').each((Index, Element) => Buffer.Prices[Index] = $(Element).text());
         $('.IuHnof').each((Index, Element) => Buffer.Platforms[Index] = $(Element).text())
         $('.C7Lkve > a:first-child').each((Index, Element) => Buffer.Links[Index] = 'https://google.com/' + ($(Element).attr('href')));
@@ -130,7 +133,7 @@ class GoogleEngine{
                         Publishers: [], PublishedDates: [], Images: [] };
         $('.DKV0Md').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
         $('.N96wpd > :first-child').each((Index, Element) => Buffer.Publishers[Index] = $(Element).text());
-        $('.N96wpd > :last-child').each((Index, Element) => {
+        $('.N96wpd > span:nth-of-type(1)').each((Index, Element) => {
             const MaybePublishedDate = $(Element).text();
             Buffer.PublishedDates[Index] = (!isNaN(MaybePublishedDate)) ? (MaybePublishedDate) : undefined;
         });
