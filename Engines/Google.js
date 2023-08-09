@@ -23,7 +23,7 @@ const { kAxiosOptions } = require('../Global');
 class GoogleEngine{
     constructor({ Query, Page, Language }){
         this.Query = Query;
-        this.Page = Page;
+        this.Page = Page;   
         this.Language = Language;
         this.Type = '';
     }
@@ -46,8 +46,8 @@ class GoogleEngine{
         const $ = await this.GetCheerioInstance();
         const [TotalIndexedResults, SearchTimeout] = this.ExtractResultStats($);
         const Buffer = { Links: [], Titles: [], Descriptions: [] };
-        $('.yuRUbf > a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
-        $('.yuRUbf > a > h3').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
+        $('.yuRUbf a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
+        $('.yuRUbf h3').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
         $('.VwiC3b').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text().trim());
         return {
             TotalIndexedResults,
