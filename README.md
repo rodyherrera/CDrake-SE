@@ -1,4 +1,9 @@
 # CDrake-SE
+<a href="https://ko-fi.com/codewithrodi"> 
+    <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="200" alt="Donate - Contribute" />
+</a>
+
+<br /> <br />
 ##### A library that will make your life easier when you want to search the internet, not pay APIs, search from your computer for free!
 
 This library allows you to search in various internet search engines, you can search for news, images, videos, items to buy and books, the results can be paginated and filtered by language in some engines, it is quite complete, we even have our own web service to browse the internet, also written in NodeJS using this library, below it will be explained how you can use and perform searches in a couple of lines of code.
