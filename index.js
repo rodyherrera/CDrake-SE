@@ -7,8 +7,7 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
- * solely with JavaScript and doses of Modafinil.
+ * CDrake-SE: Efficient and fast open source search engine built on JavaScript capable of self-hosting.
  * 
  * -> https://github.com/codewithrodi/CodexDrake/
  * -> https://github.com/codewithrodi/CDrake-SE/
@@ -21,12 +20,14 @@ const YahooEngine = require('./Engines/Yahoo');
 const QwantEngine = require('./Engines/Qwant');
 const AolEngine = require('./Engines/Aol');
 const AskEngine = require('./Engines/Ask');
+const BingEngine = require('./Engines/Bing');
 const SuggestEngine = require('./Engines/Suggest');
 const WikipediaEngine = require('./Engines/Wikipedia');
 
 module.exports = async ({ Method, Query, Page = 1, Language = 'en-US' }) => {
     const Arguments = { Query, Page, Language };
     const Instances = {
+        Bing: new BingEngine(Arguments),
         Google: new GoogleEngine(Arguments),
         Yahoo: new YahooEngine(Arguments),
         Qwant: new QwantEngine(Arguments),
@@ -55,6 +56,7 @@ module.exports = async ({ Method, Query, Page = 1, Language = 'en-US' }) => {
         return await SuggestEngine(Query);
     else if(Method === 'Search')
         return await Promise.any([
+            Instances.Bing.Search(),
             Instances.Google.Search(),
             Instances.Aol.Search(),
             Instances.Yahoo.Search(),
@@ -66,7 +68,13 @@ module.exports = async ({ Method, Query, Page = 1, Language = 'en-US' }) => {
             Instances.Aol.Videos(),
             Instances.Yahoo.Videos()
         ])
-    else if(['News', 'Shopping'].includes(Method))
+    else if('News' === Method)
+        return await Promise.any([
+            Instances.Google.News(),
+            Instances.Yahoo.News(),
+            Instances.Bing.News()
+        ]);
+    else if('Shopping' === Method)
         return await Promise.any([
             Instances.Google[Method](),
             Instances.Yahoo[Method]()

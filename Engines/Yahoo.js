@@ -7,8 +7,7 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
- * solely with JavaScript and doses of Modafinil.
+ * CDrake-SE: Efficient and fast open source search engine built on JavaScript capable of self-hosting.
  * 
  * -> https://github.com/codewithrodi/CodexDrake/
  * -> https://github.com/codewithrodi/CDrake-SE/
@@ -28,14 +27,15 @@ class YahooEngine{
         this.Type = '';
     }
 
-    ExtractResultStats = (CheerioInstance) =>
-        (CheerioInstance('.searchSuperTop').map((Index, Element) => {
+    ExtractResultStats(CheerioInstance){
+        return (CheerioInstance('.searchSuperTop').map((Index, Element) => {
             // ! Do it better
-            let Results = CheerioInstance(Element).text().replaceAll(',', '').replaceAll('.', '').match(/\d+/g)[0];
+            const Results = CheerioInstance(Element).text().replaceAll(',', '').replaceAll('.', '').match(/\d+/g)[0];
             return Results;
         }));
+    }
 
-    GetCheerioInstance = async () => {
+    async GetCheerioInstance(){
         let Endpoint = `https://search.yahoo.com/search?q=${this.Query}&ei=UTF-8&nojs=1&b=${(this.Page - 1) * 10}`;
         if(this.Type === 'Video')
             Endpoint = `https://video.search.yahoo.com/search/video;_ylt=AwrC5pn.SN9huAcANVf7w8QF;_ylu=c2VjA3NlYXJjaAR2dGlkAw--?p=${this.Query}`
@@ -46,7 +46,7 @@ class YahooEngine{
         return Cheerio.load((await Axios.get(Endpoint, kAxiosOptions)).data);
     }
 
-    Search = async () => {
+    async Search(){
         const $ = await this.GetCheerioInstance();
         const TotalIndexedResults = this.ExtractResultStats($)[0];
         const Buffer = { Links: [], Titles: [], Descriptions: [] };
@@ -64,7 +64,7 @@ class YahooEngine{
         };
     };
 
-    Videos = async () => {
+    async Videos(){
         this.Type = 'Video';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Links: [], PublishedDates: [] };
@@ -80,7 +80,7 @@ class YahooEngine{
         };
     };
 
-    News = async () => {
+    async News(){
         this.Type = 'News';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Links: [], Descriptions: [], 
@@ -105,7 +105,7 @@ class YahooEngine{
         };
     };
 
-    Shopping = async () => {
+    async Shopping(){
         this.Type = 'Shopping';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Prices: [], Platforms: [], Links: [] };

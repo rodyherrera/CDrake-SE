@@ -7,8 +7,7 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
- * solely with JavaScript and doses of Modafinil.
+ * CDrake-SE: Efficient and fast open source search engine built on JavaScript capable of self-hosting.
  * 
  * -> https://github.com/codewithrodi/CodexDrake/
  * -> https://github.com/codewithrodi/CDrake-SE/
@@ -27,7 +26,7 @@ class AolEngine{
         this.Type = '';
     }
 
-    GetCheerioInstance = async () => {
+    async GetCheerioInstance(){
         let Endpoint = `https://search.aol.com/aol/search?q=${this.Query}&b=${(this.Page - 1) * 10}`;
         if(this.Type === 'Images')
             Endpoint = `https://search.aol.com/aol/image;_ylt=AwrJ6STZf99hsP4ADWppCWVH;_ylu=Y29sbwNiZjEEcG9zAzEEdnRpZAMEc2VjA3BpdnM-?q=${this.Query}&b=${(this.Page - 1) * 10}`;
@@ -37,13 +36,14 @@ class AolEngine{
             await Axios.get(Endpoint, kAxiosOptions)).data);
     }
 
-    ExtractResultStats = (CheerioInstance) =>
-    (CheerioInstance('.fz-13').map((Index, Element) => {
-        let Results = CheerioInstance(Element).text().replaceAll(',', '').replaceAll('.', '').match(/\d+/g)[0];
-        return Results;
-    }));
+    ExtractResultStats(CheerioInstance){
+        return (CheerioInstance('.fz-13').map((Index, Element) => {
+            const Results = CheerioInstance(Element).text().replaceAll(',', '').replaceAll('.', '').match(/\d+/g)[0];
+            return Results;
+        }));
+    }
 
-    Images = async () => {
+    async Images(){
         this.Type = 'Images';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Images: [], Sources: [] };
@@ -61,7 +61,7 @@ class AolEngine{
         };
     };
 
-    Videos = async () => {
+    async Videos(){
         this.Type = 'Videos';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Links: [], PublishedDates: [], Platforms: [] };
@@ -79,7 +79,7 @@ class AolEngine{
         };
     };
 
-    Search = async () => {
+    async Search(){
         const $ = await this.GetCheerioInstance();
         const TotalIndexedResults = this.ExtractResultStats($)[0];
         const Buffer = { Links: [], Titles: [], Descriptions: [] };

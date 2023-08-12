@@ -7,8 +7,7 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
- * solely with JavaScript and doses of Modafinil.
+ * CDrake-SE: Efficient and fast open source search engine built on JavaScript capable of self-hosting.
  * 
  * -> https://github.com/codewithrodi/CodexDrake/
  * -> https://github.com/codewithrodi/CDrake-SE/
@@ -25,10 +24,12 @@ class QwantEngine{
         this.Query = Query;
     }
 
-    GetCheerioInstance = async () => Cheerio.load((
-        await Axios.get(`https://www.qwant.com/?t=images&q=${this.Query}`, kAxiosOptions)).data);
+    async GetCheerioInstance(){
+        return Cheerio.load((
+            await Axios.get(`https://www.qwant.com/?t=images&q=${this.Query}`, kAxiosOptions)).data);
+    }
 
-    Images = async () => {
+    async Images(){
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Images: [], Sources: [] };
         $('h2').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());

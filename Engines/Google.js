@@ -7,8 +7,7 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
- * solely with JavaScript and doses of Modafinil.
+ * CDrake-SE: Efficient and fast open source search engine built on JavaScript capable of self-hosting.
  * 
  * -> https://github.com/codewithrodi/CodexDrake/
  * -> https://github.com/codewithrodi/CDrake-SE/
@@ -28,8 +27,8 @@ class GoogleEngine{
         this.Type = '';
     }
     
-    ExtractResultStats = (CheerioInstance) =>
-        (CheerioInstance('#result-stats').map((Index, Element) => {
+    ExtractResultStats(CheerioInstance){
+        return (CheerioInstance('#result-stats').map((Index, Element) => {
             // ! Do it better
             let [Results, Timeout] = CheerioInstance(Element).text().split('(');
             Results = Results.replaceAll(',', '').replaceAll('.', '');
@@ -38,11 +37,14 @@ class GoogleEngine{
                 Timeout.slice(0, Timeout.indexOf(')')).split(' ')[0]
             ];
         }));
+    }
 
-    GetCheerioInstance = async () => Cheerio.load((
-        await Axios.get(`https://www.google.com/search?q=${this.Query}&start=${(this.Page - 1) * 10}&hl=${this.Language}&tbm=${this.Type}`, kAxiosOptions)).data);
+    async GetCheerioInstance(){
+        return Cheerio.load((
+            await Axios.get(`https://www.google.com/search?q=${this.Query}&start=${(this.Page - 1) * 10}&hl=${this.Language}&tbm=${this.Type}`, kAxiosOptions)).data);
+    }
 
-    Search = async () => {
+    async Search(){
         const $ = await this.GetCheerioInstance();
         const [TotalIndexedResults, SearchTimeout] = this.ExtractResultStats($);
         const Buffer = { Links: [], Titles: [], Descriptions: [] };
@@ -60,7 +62,7 @@ class GoogleEngine{
         }
     };
 
-    News = async () => {
+    async News(){
         this.Type = 'nws';
         const $ = await this.GetCheerioInstance();
         const [TotalIndexedResults, SearchTimeout] = this.ExtractResultStats($);
@@ -84,7 +86,7 @@ class GoogleEngine{
         };
     };
 
-    Videos = async () => {
+    async Videos(){
         this.Type = 'vid';
         const $ = await this.GetCheerioInstance();
         const [TotalIndexedResults, SearchTimeout] = this.ExtractResultStats($);
@@ -108,7 +110,7 @@ class GoogleEngine{
         };
     };
 
-    Shopping = async () => {
+    async Shopping(){
         this.Type = 'shop';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Titles: [], Prices: [], Platforms: [], Links: [] };
@@ -126,7 +128,7 @@ class GoogleEngine{
         };
     };
 
-    Books = async () => {
+    async Books(){
         this.Type = 'bks';
         const $ = await this.GetCheerioInstance();
         const Buffer = { Links: [], Titles: [], Descriptions: [], 

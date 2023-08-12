@@ -7,8 +7,7 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
- * solely with JavaScript and doses of Modafinil.
+ * CDrake-SE: Efficient and fast open source search engine built on JavaScript capable of self-hosting.
  * 
  * -> https://github.com/codewithrodi/CodexDrake/
  * -> https://github.com/codewithrodi/CDrake-SE/
@@ -24,7 +23,7 @@ class WikipediaEngine{
         this.Language = Language.split('-')[0];
     }
 
-    Wiki = async () => {
+    async Wiki(){
         await WikipediaRestAPI.setLang(this.Language);
         const Data = await WikipediaRestAPI.page(this.Query);
         const { 

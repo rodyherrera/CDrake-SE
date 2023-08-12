@@ -7,8 +7,7 @@
  *
  * For related information - https://github.com/CodeWithRodi/CDrake-SE/
  *
- * CDrake-SE: Open source, ridiculously fast search engine capable of self-hosting built 
- * solely with JavaScript and doses of Modafinil.
+ * CDrake-SE: Efficient and fast open source search engine built on JavaScript capable of self-hosting.
  * 
  * -> https://github.com/codewithrodi/CodexDrake/
  * -> https://github.com/codewithrodi/CDrake-SE/
@@ -26,16 +25,19 @@ class AskEngine{
         this.Page = Page;
     }
 
-    ExtractResultStats = (CheerioInstance) =>
-        (CheerioInstance('.PartialResultsHeader-summary').map((Index, Element) => {
-            let Results = CheerioInstance(Element).text().replaceAll(',', '').replaceAll('.', '').match(/\d+/g)[2];
+    ExtractResultStats(CheerioInstance){
+        return (CheerioInstance('.PartialResultsHeader-summary').map((_, Element) => {
+            const Results = CheerioInstance(Element).text().replaceAll(',', '').replaceAll('.', '').match(/\d+/g)[2];
             return Results;
         }));
-        
-    GetCheerioInstance = async () => Cheerio.load((
-        await Axios.get(`https://www.ask.com/web?o=0&l=dir&qo=pagination&q=${this.Query}&qsrc=998&page=${this.Page}`, kAxiosOptions)).data);
-    
-    Search = async () => {
+    }
+
+    async GetCheerioInstance(){
+        return Cheerio.load((
+            await Axios.get(`https://www.ask.com/web?o=0&l=dir&qo=pagination&q=${this.Query}&qsrc=998&page=${this.Page}`, kAxiosOptions)).data);
+    }
+
+    async Search(){
         const $ = await this.GetCheerioInstance();
         const TotalIndexedResults = this.ExtractResultStats($)[0];
         const Buffer = { Links: [], Titles: [], Descriptions: [] };

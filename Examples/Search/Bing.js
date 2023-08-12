@@ -15,9 +15,9 @@
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  ****/
 
-const GoogleEngine = require('../../Engines/Google');
+const BingEngine = require('../../Engines/Bing');
 
 (async () => {
-    const Instance = new GoogleEngine({ Query: 'Elon Musk', Page: 1 });
-    console.log(await Instance.Shopping());
+    const Instance = new BingEngine({ Query: 'Elon Musk', Page: 1 });
+    console.log(await Instance.Search());
 })();
