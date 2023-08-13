@@ -484,5 +484,3 @@ const SearchEngine = require('cdrake-se');
 
 ### Contributions and future versions
 This library along with its real world usage example web service will continue to receive updates, improvements and bug fixes, I decided to make the engine that uses the codexdrake library search web service so that other developers can experiment with it, create better stuff and update them if they fucking want to, they can do whatever they want with the code.
-
-### Remember to drink water bby.

@@ -100,9 +100,9 @@ class GoogleEngine{
         return {
             TotalIndexedResults,
             SearchTimeout,
-            Results: Buffer.Titles.map((Link, Index) => ({
-                Link,
-                Title: Buffer.Titles[Index],
+            Results: Buffer.Titles.map((Title, Index) => ({
+                Title,
+                Link: Buffer.Links[Index],
                 Description: Buffer.Descriptions[Index],
                 Platform: Buffer.Platforms[Index],
                 PublishedAt: Buffer.PublishedDates[Index]
