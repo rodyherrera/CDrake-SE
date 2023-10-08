@@ -48,7 +48,7 @@ class GoogleEngine{
         const $ = await this.GetCheerioInstance();
         const [TotalIndexedResults, SearchTimeout] = this.ExtractResultStats($);
         const Buffer = { Links: [], Titles: [], Descriptions: [] };
-        $('.yuRUbf > div > a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
+        $('.yuRUbf a').each((Index, Element) => Buffer.Links[Index] = $(Element).attr('href'));
         $('.yuRUbf h3').each((Index, Element) => Buffer.Titles[Index] = $(Element).text());
         $('.VwiC3b').each((Index, Element) => Buffer.Descriptions[Index] = $(Element).text().trim());
         return {
