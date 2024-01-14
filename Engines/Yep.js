@@ -5,12 +5,12 @@
  *
  * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
  *
- * For related information - https://github.com/CodeWithRodi/CDrake-SE/
+ * For related information - https://github.com/rodyherrera/CDrake-SE/
  *
  * CDrake-SE: Efficient and fast open source search engine built on JavaScript capable of self-hosting.
  * 
- * -> https://github.com/codewithrodi/CodexDrake/
- * -> https://github.com/codewithrodi/CDrake-SE/
+ * -> https://github.com/rodyherrera/CodexDrake/
+ * -> https://github.com/rodyherrera/CDrake-SE/
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  ****/

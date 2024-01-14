@@ -9,7 +9,7 @@
 This library allows you to search in various internet search engines, you can search for news, images, videos, items to buy and books, the results can be paginated and filtered by language in some engines, it is quite complete, we even have our own web service to browse the internet, also written in NodeJS using this library, below it will be explained how you can use and perform searches in a couple of lines of code.
 It is important to note that the results obtained from this library when performing searches will depend on the location where the script is being executed, the results will be different if you are testing the library in the United States than in Chile, in this case, this library was developed in Chile, where all categories work without any problem.
 
-Previously it was mentioned to you that we had a web service that works thanks to this library, go through the demo! [https://codexdrake.codewithrodi.com/](https://codexdrake.codewithrodi.com "CodexDrake Web Search Engine")
+Previously it was mentioned to you that we had a web service that works thanks to this library, go through the demo! [https://codexdrake.rodyherrera.com/](https://codexdrake.rodyherrera.com "CodexDrake Web Search Engine")
 
 ### Installation
 Before we explain how to use this library, we must first start by installing it, it is quite easy and you only have to execute a line of code in your terminal
